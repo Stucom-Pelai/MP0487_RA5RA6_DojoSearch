@@ -61,7 +61,7 @@ class UserController
 
         if (empty($email) || empty($password)) {
             $_SESSION['error'] = 'Error: Email y contraseña son obligatorios.';
-            header('Location: ../php/login.php');
+            header('Location: ../views/php/login.php');
             exit;
         }
 
@@ -81,18 +81,18 @@ class UserController
                     }
                     exit;
                 } else {
-                    $_SESSION['error'] = 'Debug: Contraseña incorrecta para ' . htmlspecialchars($email);
-                    header('Location: ../php/login.php');
+                    $_SESSION['error'] = 'Contraseña incorrecta para ' . htmlspecialchars($email);
+                    header('Location: ../views/php/login.php');
                     exit;
                 }
             } else {
-                $_SESSION['error'] = 'Debug: No se encontró usuario con el correo ' . htmlspecialchars($email);
-                header('Location: ../php/login.php');
+                $_SESSION['error'] = 'No se encontró usuario con el correo ' . htmlspecialchars($email);
+                header('Location: ../views/php/login.php');
                 exit;
             }
         } catch (PDOException $e) {
             $_SESSION['error'] = 'Error de base de datos: ' . $e->getMessage();
-            header('Location: ../php/login.php');
+            header('Location: ../views/php/login.php');
             exit;
         }
     }
@@ -168,7 +168,7 @@ class UserController
 
                 if ($stmt->execute()) {
                     $_SESSION['success'] = 'Registro exitoso. Por favor, inicia sesión.';
-                    header('Location: ../php/login.php');
+                    header('Location: ../views/php/login.php');
                     exit();
                 } else {
                     $_SESSION['error'] = 'Error al registrar el usuario.';
@@ -186,7 +186,7 @@ class UserController
     public function updateUser()
     {
         if (!isset($_SESSION['user'])) {
-            header('Location: ../php/login.php');
+            header('Location: ../views/php/login.php');
             exit;
         }
 
@@ -291,7 +291,7 @@ class UserController
     {
         if (!isset($_SESSION['user'])) {
             $_SESSION['error'] = 'No has iniciado sesión.';
-            header('Location: ../php/login.php');
+            header('Location: ../views/php/login.php');
             exit;
         }
 
@@ -361,7 +361,7 @@ class UserController
     public function updateGeneral()
     {
         if (!isset($_SESSION['user'])) {
-            header('Location: ../php/login.php');
+            header('Location: ../views/php/login.php');
             exit;
         }
 
@@ -431,7 +431,7 @@ class UserController
     public function updatePassword()
     {
         if (!isset($_SESSION['user'])) {
-            header('Location: ../php/login.php');
+            header('Location: ../views/php/login.php');
             exit;
         }
 
@@ -477,7 +477,7 @@ class UserController
     public function updateInfo()
     {
         if (!isset($_SESSION['user'])) {
-            header('Location: ../php/login.php');
+            header('Location: ../views/php/login.php');
             exit;
         }
 
@@ -527,7 +527,7 @@ class UserController
     public function updateSocial()
     {
         if (!isset($_SESSION['user'])) {
-            header('Location: ../php/login.php');
+            header('Location: ../views/php/login.php');
             exit;
         }
 
@@ -572,7 +572,7 @@ class UserController
     public function updateNotifications()
     {
         if (!isset($_SESSION['user'])) {
-            header('Location: ../php/login.php');
+            header('Location: ../views/php/login.php');
             exit;
         }
 
@@ -615,7 +615,7 @@ class UserController
     public function deleteAccount()
     {
         if (!isset($_SESSION['user'])) {
-            header('Location: ../php/login.php');
+            header('Location: ../views/php/login.php');
             exit;
         }
 
@@ -649,7 +649,7 @@ class UserController
     {
         session_unset();
         session_destroy();
-        header('Location: ../php/login.php');
+        header('Location: ../views/php/login.php');
         exit();
     }
 
@@ -657,7 +657,7 @@ class UserController
     {
         if (!isset($_SESSION['user'])) {
             session_destroy();
-            header('Location: ../php/login.php');
+            header('Location: ../views/php/login.php');
             exit();
         }
     }

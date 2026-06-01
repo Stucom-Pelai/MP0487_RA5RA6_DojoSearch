@@ -57,6 +57,17 @@ if (isset($_SESSION['user'])) {
                 <div class="divider-small"></div>
             </div>
 
+            <?php if (isset($_SESSION['error'])): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo htmlspecialchars($_SESSION['error']); unset($_SESSION['error']); ?>
+                </div>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['success'])): ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo htmlspecialchars($_SESSION['success']); unset($_SESSION['success']); ?>
+                </div>
+            <?php endif; ?>
+
             <form action="../../controllers/UserController.php" method="POST" class="martial-form">
                 <input type="hidden" name="action" value="login"> <!-- Campo añadido -->
                 <div class="form-group">
